@@ -1,30 +1,33 @@
 ---
 const whatsappNumber = '5547989248045';
 const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
-	'Olá, Martinsys! Quero saber mais sobre seus serviços.'
+	'Olá, Martinsys! Quero saber mais sobre o Contratos IA.'
 )}`;
 const email = 'aderismartins.f@gmail.com';
 
 const navLinks = [
-	{ href: '#servicos', label: 'Serviços' },
-	{ href: '#produtos', label: 'Produtos' },
-	{ href: '#sobre', label: 'Sobre' },
+	{ href: '#inicio', label: 'Início' },
+	{ href: '#contratos-ia', label: 'Contratos IA' },
+	{ href: '#capacidades', label: 'Capacidades de IA' },
+	{ href: '#como-workamos', label: 'Como trabalhamos' },
+	{ href: '#cases', label: 'Cases' },
+	{ href: '#tecnologia', label: 'Tecnologia' },
+	{ href: '#seguranca', label: 'Segurança' },
 	{ href: '#contato', label: 'Contato' },
 ];
 ---
-
 <!doctype html>
 <html lang="pt-BR">
 	<head>
 		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href={import.meta.env.BASE_URL + 'favicon.svg'} />
+		<link rel="icon" type="image/svg+json" href={import.meta.env.BASE_URL + 'favicon.svg'} />
 		<meta name="viewport" content="width=device-width" />
 		<meta
 			name="description"
-			content="Martinsys — desenvolvimento de software sob medida, criação de sites, aplicativos mobile e consultoria de IA. Soluções digitais de ponta a ponta para o seu negócio."
+			content="Martinsys — Engenharia de software e IA para automatizar processos empresariais. Transformamos processos complexos em software inteligente, automatizado e mensurável."
 		/>
 		<meta name="generator" content={Astro.generator} />
-		<title>Martinsys | Software sob medida, sites, apps e consultoria de IA</title>
+		<title>Martinsys | Software inteligente e IA para empresas</title>
 	</head>
 	<body>
 		<a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
@@ -43,7 +46,7 @@ const navLinks = [
 						/>
 						<defs>
 							<linearGradient id="brand-grad" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
-								<stop stop-color="#4da3ff" />
+								<stop stop-color="#3f8cff" />
 								<stop offset="1" stop-color="#8b5cf6" />
 							</linearGradient>
 						</defs>
@@ -74,296 +77,306 @@ const navLinks = [
 			<section id="inicio" class="hero">
 				<div class="hero-bg" aria-hidden="true"></div>
 				<div class="container hero-inner">
-					<p class="eyebrow">Desenvolvimento de software · Sites · Apps · IA</p>
-					<h1>Tecnologia sob medida para o crescimento do seu negócio</h1>
+					<h1>Software inteligente para transformar processos complexos em resultados.</h1>
 					<p class="hero-sub">
-						A Martinsys cria software, sites, aplicativos mobile e soluções de IA que
-						geram resultado real. Do planejamento à implementação, tudo em um só lugar.
+						A Martinsys combina engenharia de software, automação e inteligência artificial para criar sistemas que entendem dados, automatizam tarefas e ajudam sua empresa a tomar decisões melhores.
 					</p>
 					<div class="hero-cta">
-						<a class="btn btn-primary" href={whatsappLink} target="_blank" rel="noopener">
-							<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
-								<path
-									fill="currentColor"
-									d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.9-4.45 9.9-9.91C21.95 6.45 17.5 2 12.04 2m5.82 14.13c-.25.7-1.45 1.33-2.02 1.42-.52.08-1.17.11-1.89-.12-.43-.13-.99-.32-1.7-.63-3-1.29-4.95-4.31-5.1-4.51-.15-.2-1.22-1.63-1.22-3.11 0-1.48.78-2.21 1.05-2.51.28-.3.61-.38.81-.38h.58c.19 0 .44-.07.69.53.25.6.85 2.08.93 2.23.07.15.12.33.02.53-.1.2-.15.32-.3.5-.15.17-.31.39-.44.52-.15.15-.31.32-.13.62.17.3.78 1.28 1.67 2.07 1.15 1.02 2.11 1.34 2.41 1.49.3.15.47.13.65-.08.17-.2.75-.87.95-1.17.2-.3.4-.25.67-.15.28.1 1.75.83 2.05.98.3.15.5.22.57.35.08.12.08.7-.17 1.4"
-								/>
-							</svg>
-							Falar no WhatsApp
+						<a class="btn btn-primary" href="#contratos-ia">Conhecer o Contratos IA</a>
+						<a class="btn btn-secondary" href={whatsappLink} target="_blank" rel="noopener">
+							Falar com um especialista
 						</a>
-						<a class="btn btn-secondary" href="#servicos">Conhecer os serviços</a>
 					</div>
 				</div>
 			</section>
 
-			<section id="servicos" class="section">
+			<section id="problema" class="section section-alt">
 				<div class="container">
-					<p class="eyebrow">O que fazemos</p>
-					<h2 class="section-title">Soluções digitais de ponta a ponta</h2>
-					<p class="section-sub">
-						Cada projeto é desenhado para o seu contexto — tecnologia aplicada a um
-						objetivo claro.
+					<p class="eyebrow">Problema empresarial</p>
+					<h2 class="section-title">Processos complexos perdem-se em documentos.</h2>
+					<p>
+						Empresas lidam com um volume crescente de contratos e documentos regulatórios. A análise manual é lenta, propensa a erros e impossível de escalar. Informações críticas ficam escondidas, prazos são perdidos e riscos passam despercebidos até que seja tarde demais.
 					</p>
+				</div>
+			</section>
 
+			<section id="como-workamos" class="section">
+				<div class="container">
+					<p class="eyebrow">Como trabalhamos</p>
+					<h2 class="section-title">Do problema à solução inteligente</h2>
 					<div class="card-grid">
 						<article class="card">
 							<div class="card-icon" aria-hidden="true">
 								<svg viewBox="0 0 24 24" width="26" height="26">
-									<path
-										fill="none"
-										stroke="currentColor"
-										stroke-width="1.8"
-										stroke-linecap="round"
-										stroke-linejoin="round"
-										d="M8 9l-4 3 4 3M16 9l4 3-4 3M13 6l-2 12"
-									/>
+									<path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M8 9l-4 3 4 3M16 9l4 3-4 3M13 6l-2 12"/>
 								</svg>
 							</div>
-							<h3>Software sob medida</h3>
-							<p>
-								Sistemas, integrações e automações desenvolvidos para o seu processo —
-								sem se adaptar às limitações de soluções de prateleira.
-							</p>
+							<h3>01 Descoberta</h3>
+							<p>Entendemos o processo e o problema do seu negócio.</p>
 						</article>
-
 						<article class="card">
 							<div class="card-icon" aria-hidden="true">
 								<svg viewBox="0 0 24 24" width="26" height="26">
-									<path
-										fill="none"
-										stroke="currentColor"
-										stroke-width="1.8"
-										stroke-linecap="round"
-										stroke-linejoin="round"
-										d="M3.5 5.5h17v13h-17zM3.5 9.5h17M7 16h4"
-									/>
+									<path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M12 22v-4c3 7-9 3-9-10s-6-13 6-13c3 0 6 4 6 10v4"/>
 								</svg>
 							</div>
-							<h3>Criação de sites</h3>
-							<p>
-								Sites institucionais, landing pages e portais rápidos, responsivos e
-								otimizados para conversão e performance.
-							</p>
+							<h3>02 Arquitetura</h3>
+							<p>Definimos a solução técnica adequada às suas necessidades.</p>
 						</article>
-
 						<article class="card">
 							<div class="card-icon" aria-hidden="true">
 								<svg viewBox="0 0 24 24" width="26" height="26">
-									<path
-										fill="none"
-										stroke="currentColor"
-										stroke-width="1.8"
-										stroke-linecap="round"
-										stroke-linejoin="round"
-										d="M12 18.5h.01M10 4h4M5 8a3 3 0 0 1 3-3h8a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3H8a3 3 0 0 1-3-3z"
-									/>
+									<path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M3.5 5.5h17v13h-17zM3.5 9.5h17M7 16h4"/>
 								</svg>
 							</div>
-							<h3>Aplicativos mobile</h3>
-							<p>
-								Apps para Android e iOS desenvolvidos do conceito à publicação nas
-								lojas, com experiência pensada para o usuário.
-							</p>
+							<h3>03 MVP</h3>
+							<p>Primeira versão funcional do pipeline de processamento.</p>
 						</article>
-
 						<article class="card">
 							<div class="card-icon" aria-hidden="true">
 								<svg viewBox="0 0 24 24" width="26" height="26">
-									<path
-										fill="none"
-										stroke="currentColor"
-										stroke-width="1.8"
-										stroke-linecap="round"
-										stroke-linejoin="round"
-										d="M12 3a4 4 0 0 1 4 4c0 1.5-.8 2.6-1 3-.7 1.6.3 3 1.5 3.8 1.4.9 2.5 2.2 2.5 4.2v2H5v-2c0-2 1.1-3.3 2.5-4.2 1.2-.8 2.2-2.2 1.5-3.8-.2-.4-1-1.5-1-3a4 4 0 0 1 4-4M8.5 20a3.5 3.5 0 0 0 7 0"
-									/>
+									<path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M9 18V5l12-2v13"/>
 								</svg>
 							</div>
-							<h3>Consultoria de IA</h3>
-							<p>
-								Ajudamos sua empresa a implementar inteligência artificial nas áreas
-								certas: estratégia, integração e uso responsável.
-							</p>
+							<h3>04 Inteligência</h3>
+							<p>Automação, RAG, agentes ou IA aplicada quando fizer sentido.</p>
+						</article>
+						<article class="card">
+							<div class="card-icon" aria-hidden="true">
+								<svg viewBox="0 0 24 24" width="26" height="26">
+									<path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M12 3a4 4 0 0 1 4 4c0 1.5-.8 2.6-1 3-.7 1.6.3 3 1.5 3.8 1.4.9 2.5 2.2 2.5 4.2v2H5v-2c0-2 1.1-3.3 2.5-4.2 1.2-.8 2.2-2.2 1.5-3.8-.2-.4-1-1.5-1-3a4 4 0 0 1 4-4M8.5 20a3.5 3.5 0 0 0 7 0"/>
+								</svg>
+							</div>
+							<h3>05 Evolução</h3>
+							<p>Monitoramos, medimos e evoluímos a solução continuamente.</p>
 						</article>
 					</div>
 				</div>
 			</section>
 
-			<section id="produtos" class="section section-alt">
-				<div class="container product-grid">
-					<div class="product-visual" aria-hidden="true">
-						<div class="product-window">
-							<div class="window-bar">
-								<span></span><span></span><span></span>
+			<section id="contratos-ia" class="section section-alt">
+				<div class="container">
+					<p class="eyebrow">Flagship</p>
+					<h2 class="section-title">Seus contratos escondem informações importantes. A IA encontra.</h2>
+					<p class="section-sub">
+						O Contratos IA transforma documentos complexos em informações estruturadas, riscos, obrigações, prazos e respostas acionáveis.
+					</p>
+					<div class="hero-cta">
+						<a class="btn btn-primary" href="#demo">Solicitar demonstração</a>
+					</div>
+				</div>
+			</section>
+
+			<section id="demo-visual" class="section">
+				<div class="container">
+					<p class="eyebrow">Demonstração visual do produto</p>
+					<h2 class="section-title">Do PDF à decisão em segundos</h2>
+					<div class="demo-visual-wrapper">
+						<div class="pdf-viewer" aria-label="Visualizador de PDF com cláusulas destacadas">
+							<div class="pdf-page">
+								<div class="pdf-header">
+									<svg viewBox="0 0 600 800" width="100%" height="auto" aria-hidden="true">
+										<rect width="600" height="800" rx="8" fill="#1a2a4a"/>
+										<path d="M600 0L0 0L0 800Z" fill="#0f1a2c"/>
+										<!-- Clause highlights -->
+										<rect x="100" y="150" width="400" height="60" rx="4" fill="rgba(251, 191, 36, 0.25)"/>
+										<rect x="100" y="280" width="400" height="50" rx="4" fill="rgba(251, 191, 36, 0.25)"/>
+										<rect x="100" y="430" width="300" height="55" rx="4" fill="rgba(251, 191, 36, 0.25)"/>
+										<!-- Text lines -->
+										<line x1="100" y1="170" x2="500" y2="170" stroke="rgba(251, 191, 36, 0.5)" stroke-width="1"/>
+										<line x1="100" y1="220" x2="500" y2="220" stroke="rgba(251, 191, 36, 0.5)" stroke-width="1"/>
+										<line x1="100" y1="290" x2="500" y2="290" stroke="rgba(251, 191, 36, 0.5)" stroke-width="1"/>
+										<line x1="100" y1="360" x2="500" y2="360" stroke="rgba(251, 191, 36, 0.5)" stroke-width="1"/>
+										<line x1="100" y1="445" x2="500" y2="445" stroke="rgba(251, 191, 36, 0.5)" stroke-width="1"/>
+										<line x1="100" y1="520" x2="500" y2="520" stroke="rgba(251, 191, 36, 0.5)" stroke-width="1"/>
+										<line x1="100" y1="600" x2="500" y2="600" stroke="rgba(251, 191, 36, 0.5)" stroke-width="1"/>
+										<line x1="100" y1="680" x2="500" y2="680" stroke="rgba(251, 191, 36, 0.5)" stroke-width="1"/>
+									</svg>
+								</div>
+								<div class="pdf-title">Contrato de Prestação de Serviços</div>
 							</div>
-							<div class="window-body">
-								<p class="win-stat-label">Contratos ativos</p>
-								<p class="win-stat">128</p>
-								<div class="win-rows">
-									<div class="win-row">
-										<span class="win-pill win-pill-ok">Renova em 12 dias</span>
-										<span class="win-tag">Fornecedor</span>
-									</div>
-									<div class="win-row">
-										<span class="win-pill win-pill-warn">Vence em 5 dias</span>
-										<span class="win-tag">Locação</span>
-									</div>
-									<div class="win-row">
-										<span class="win-pill win-pill-ai">IA · resumo</span>
-										<span class="win-tag">Cláusulas OK</span>
-									</div>
+						</div>
+
+						<div class="ai-analysis-panel">
+							<div class="panel-header">
+								<h3>ANÁLISE DO CONTRATO</h3>
+							</div>
+							<div class="risk-score">
+								<span>Risco geral</span>
+								<span class="risk-level">████████░░ 78/100</span>
+								<span class="risk-label">ALTO RISCO</span>
+							</div>
+							<ul class="risk-bullets">
+								<li>Multa contratual</li>
+								<li>Renovação automática</li>
+								<li>Limitação de responsabilidade</li>
+							</ul>
+							<div class="risk-datas">
+								<span>12/09/2026 Renovação</span>
+								<span>28/10/2026 Aviso prévio</span>
+							</div>
+							<div class="obligations">
+								<span>12 obrigações identificadas</span>
+							</div>
+							<div class="contract-value">
+								<span>R$ 250.000,00</span>
+							</div>
+							<div class="chat-window">
+								<div class="chat-header">
+									<strong>Quais são os principais riscos deste contrato?</strong>
+								</div>
+								<div class="chat-response">
+									Foram identificados 3 pontos que merecem revisão: (1) multa contratual não especificada, (2) renovação automática sem aviso prévio, (3) limitação de responsabilidade ampla.
 								</div>
 							</div>
 						</div>
 					</div>
+					<div class="demo-pipeline">
+						<div class="pipeline-step">01 UPLOAD (PDF/DOCX/documento digitalizado)</div>
+						<div class="pipeline-step">02 INGESTÃO (OCR + parsing + normalização)</div>
+						<div class="pipeline-step">03 IA (extração + classificação + RAG)</div>
+						<div class="pipeline-step">04 ANÁLISE (riscos + cláusulas + obrigações)</div>
+						<div class="pipeline-step">05 INSIGHTS (resumo + alertas + perguntas)</div>
+						<div class="pipeline-step">06 AÇÃO (decisão + acompanhamento + relatório)</div>
+					</div>
+				</div>
+			</section>
 
-					<div class="product-info">
-						<div class="product-badge">Produto em destaque</div>
-						<h2 class="section-title">Contratos IA<span class="tm">·</span></h2>
-						<p class="section-sub">
-							Sistema de gestão de contratos com inteligência artificial.
-						</p>
-						<p>
-							A IA da Martinsys centraliza seus contratos, extrai cláusulas e prazos
-							automaticamente, sinaliza riscos e renovações e reduz drasticamente o
-							tempo gasto com administração manual.
-						</p>
-						<ul class="feature-list">
-							<li>Extração automática de cláusulas e prazos</li>
-							<li>Alertas de vencimento e renovação</li>
-							<li>IA para consulta e revisão de riscos</li>
-							<li>Visão consolidada do seu portfólio de contratos</li>
-						</ul>
-						<div class="hero-cta">
-							<a class="btn btn-primary" href={whatsappLink} target="_blank" rel="noopener">
-								Quero uma demonstração
-							</a>
-							<a class="btn btn-secondary" href={`mailto:${email}`}>Falar por e-mail</a>
+			<section id="capacidades" class="section">
+				<div class="container">
+					<p class="eyebrow">Capacidades de IA</p>
+					<h2 class="section-title">IA que trabalha com seus dados</h2>
+					<p>
+						A Martinsys desenvolve soluções capazes de interpretar documentos, consultar conhecimento interno, encontrar padrões, executar tarefas e integrar inteligência diretamente aos processos da empresa.
+					</p>
+					<div class="capabilities-grid">
+						<article class="card capability-card">
+							<div class="card-icon" aria-hidden="true">
+								<svg viewBox="0 0 24 24" width="26" height="26">
+									<path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M12 10v6m0 0v6m0-6h6m-6 0H6"/>
+								</svg>
+							</div>
+							<h3>RAG</h3>
+							<p>IA conectada ao conhecimento real da empresa. Pesquisa sem alucinações across documentos internos.</p>
+						</article>
+						<article class="card capability-card">
+							<div class="card-icon" aria-hidden="true">
+								<svg viewBox="0 0 24 24" width="26" height="26">
+									<path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+								</svg>
+							</div>
+							<h3>Agentes</h3>
+							<p>Sistemas capazes de executar tarefas e tomar ações dentro de fluxos controlados.</p>
+						</article>
+						<article class="card capability-card">
+							<div class="card-icon" aria-hidden="true">
+								<svg viewBox="0 0 24 24" width="26" height="26">
+									<path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 3a5 5 0 0 1 5 5h2M12 12l8 8"/>
+								</svg>
+							</div>
+							<h3>Document AI</h3>
+							<p>Extração e interpretação de informações em PDFs, contratos e documentos.</p>
+						</article>
+						<article class="card capability-card">
+							<div class="card-icon" aria-hidden="true">
+								<svg viewBox="0 0 24 24" width="26" height="26">
+									<path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M12 3a4 4 0 0 1 4 4c0 1.5-.8 2.6-1 3-.7 1.6.3 3 1.5 3.8 1.4.9 2.5 2.2 2.5 4.2v2H5v-2c0-2 1.1-3.3 2.5-4.2 1.2-.8 2.2-2.2 1.5-3.8-.2-.4-1-1.5-1-3a4 4 0 0 1 4-4M8.5 20a3.5 3.5 0 0 0 7 0"/>
+								</svg>
+							</div>
+							<h3>Automação inteligente</h3>
+							<p>Processos manuais transformados em workflows automatizados.</p>
+						</article>
+						<article class="card capability-card">
+							<div class="card-icon" aria-hidden="true">
+								<svg viewBox="0 0 24 24" width="26" height="26">
+									<path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M10 13a9 9 0 1 1-7.5 13.08m0-13.08a9 9 0 1 1-7.5 13.08M16 3a5 5 0 0 1 5 5h-2M12 8l-4 9 9 3"/>
+								</svg>
+							</div>
+							<h3>IA local</h3>
+							<p>Quando segurança, privacidade ou controle forem importantes, avaliar modelos em infraestrutura própria.</p>
+						</article>
+						<article class="card capability-card">
+							<div class="card-icon" aria-hidden="true">
+								<svg viewBox="0 0 24 24" width="26" height="26">
+									<path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M12 10v6m0 0v6m0-6h6m-6 0H6"/>
+								</svg>
+							</div>
+							<h3>Integrações</h3>
+							<p>IA conectada aos sistemas que a empresa já utiliza.</p>
+						</article>
+					</div>
+				</div>
+			</section>
+
+			<section id="cases" class="section section-alt">
+				<div class="container">
+					<p class="eyebrow">Cases/provas</p>
+					<h2 class="section-title">Tecnologia aplicada a problemas reais</h2>
+					<p>
+						Only real cases. Contratos IA: Problema: grande volume de contratos e análise manual; Solução: pipeline de ingestão + extração + RAG + análise de riscos; Tecnologias: Java · Python · PostgreSQL · pgvector · RabbitMQ · LLM; Resultado: informações estruturadas e pesquisáveis a partir dos documentos.
+					</p>
+				</div>
+			</section>
+
+			<section id="tecnologia" class="section">
+				<div class="container">
+					<p class="eyebrow">Arquitetura e tecnologia</p>
+					<h2 class="section-title">Arquitetura MARTINSYS AI</h2>
+					<div class="architecture-diagram">
+						<div class="ai-block">MARTINSYS AI</div>
+						<div class="arrow">→</div>
+						<div class="component-group">
+							<div class="component">Document</div>
+							<div class="component">RAG</div>
+							<div class="component">Agents</div>
+						</div>
+						<div class="arrow">→</div>
+						<div class="gateway-group">
+							<div class="gateway">OCR</div>
+							<div class="gateway">Embeddings</div>
+							<div class="gateway">Tools</div>
+						</div>
+						<div class="arrow">→</div>
+						<div class="ai-gateway">AI Gateway</div>
+						<div class="arrow">→</div>
+						<div class="tech-stack">
+							<div class="tech-item">Java/Spring Boot</div>
+							<div class="tech-item">Python</div>
+							<div class="tech-item">Go</div>
+							<div class="tech-item">PostgreSQL</div>
+							<div class="tech-item">pgvector</div>
+							<div class="tech-item">RabbitMQ</div>
+							<div class="tech-item">Docker</div>
+							<div class="tech-item">Kubernetes</div>
+							<div class="tech-item">Ollama</div>
+							<div class="tech-item">LLMs</div>
 						</div>
 					</div>
 				</div>
 			</section>
 
-			<section id="sobre" class="section">
-				<div class="container about-grid">
-					<div class="about-text">
-						<p class="eyebrow">Sobre a Martinsys</p>
-						<h2 class="section-title">Engenharia de software e IA de mãos dadas</h2>
-						<p>
-							A Martinsys une desenvolvimento de software e inteligência artificial para
-							entregar soluções digitais de ponta a ponta. Trabalhamos lado a lado com
-							nossos clientes — de novas empresas a organizações consolidadas — para
-							transformar objetivos de negócio em tecnologia que funciona.
-						</p>
-					</div>
-					<div class="diffs">
-						<div class="diff">
-							<div class="card-icon dif-icon" aria-hidden="true">
-								<svg viewBox="0 0 24 24" width="22" height="22">
-									<path
-										fill="none"
-										stroke="currentColor"
-										stroke-width="1.8"
-										stroke-linecap="round"
-										stroke-linejoin="round"
-										d="M5 13a1 1 0 1 0 0-2 1 1 0 0 0 0 2M12 13a1 1 0 1 0 0-2 1 1 0 0 0 0 2M19 13a1 1 0 1 0 0-2 1 1 0 0 0 0 2M8 8h8M8 16h8"
-									/>
-								</svg>
-							</div>
-							<div>
-								<h3>Soluções sob medida</h3>
-								<p>Cada projeto começa pelo seu problema, não por um produto pronto.</p>
-							</div>
-						</div>
-						<div class="diff">
-							<div class="card-icon dif-icon" aria-hidden="true">
-								<svg viewBox="0 0 24 24" width="22" height="22">
-									<path
-										fill="none"
-										stroke="currentColor"
-										stroke-width="1.8"
-										stroke-linecap="round"
-										stroke-linejoin="round"
-										d="M17 20v-1a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v1M10 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8M21 20v-1a4 4 0 0 0-3-3.9M15 4.1a4 4 0 0 1 0 7.8"
-									/>
-								</svg>
-							</div>
-							<div>
-								<h3>Equipe técnica completa</h3>
-								<p>Desenvolvimento, design e IA no mesmo lugar, de ponta a ponta.</p>
-							</div>
-						</div>
-						<div class="diff">
-							<div class="card-icon dif-icon" aria-hidden="true">
-								<svg viewBox="0 0 24 24" width="22" height="22">
-									<path
-										fill="none"
-										stroke="currentColor"
-										stroke-width="1.8"
-										stroke-linecap="round"
-										stroke-linejoin="round"
-										d="M3 17l6-6 4 4 8-8M14 7h7v7"
-									/>
-								</svg>
-							</div>
-							<div>
-								<h3>Foco em resultado</h3>
-								<p>Entregas pensadas para gerar valor: mais eficiência, mais conversão.</p>
-							</div>
-						</div>
-						<div class="diff">
-							<div class="card-icon dif-icon" aria-hidden="true">
-								<svg viewBox="0 0 24 24" width="22" height="22">
-									<path
-										fill="none"
-										stroke="currentColor"
-										stroke-width="1.8"
-										stroke-linecap="round"
-										stroke-linejoin="round"
-										d="M8 10h8m-8 4h5M10 4a6 6 0 1 0 0 12h.6l4 4-1-4.2A6 6 0 0 0 10 4z"
-									/>
-								</svg>
-							</div>
-							<div>
-								<h3>Parceria próxima</h3>
-								<p>Comunicação direta e atendimento humanizado, do início ao fim.</p>
-							</div>
-						</div>
-					</div>
+			<section id="seguranca" class="section">
+				<div class="container">
+					<p class="eyebrow">Segurança</p>
+					<h2 class="section-title">Seus contratos continuam sendo seus.</h2>
+					<p>
+						Contratos IA arquitetura: criptografia em trânsito e em repouso, controle de acesso por organização, logs, auditoria, backup, segregação por organização. Apresentamos apenas o que é realmente implementado: não inventamos certificações, padrões ou reivindicações absolutas ("100% seguro").
+					</p>
 				</div>
 			</section>
 
 			<section id="contato" class="section section-alt">
 				<div class="container contact-box">
 					<p class="eyebrow">Contato</p>
-					<h2 class="section-title">Vamos construir algo juntos?</h2>
-					<p class="section-sub">
-						Conte o seu desafio e receba uma proposta alinhada ao seu objetivo. Respostas
-						rápidas pelo WhatsApp ou e-mail.
+					<h2 class="section-title">Qual processo da sua empresa poderia ser automatizado com IA?</h2>
+					<p>
+						Conte o problema. A Martinsys ajuda a transformar a ideia em uma solução de software real.
 					</p>
-
 					<div class="contact-actions">
 						<a class="btn btn-primary" href={whatsappLink} target="_blank" rel="noopener">
-							<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
-								<path
-									fill="currentColor"
-									d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.9-4.45 9.9-9.91C21.95 6.45 17.5 2 12.04 2m5.82 14.13c-.25.7-1.45 1.33-2.02 1.42-.52.08-1.17.11-1.89-.12-.43-.13-.99-.32-1.7-.63-3-1.29-4.95-4.31-5.1-4.51-.15-.2-1.22-1.63-1.22-3.11 0-1.48.78-2.21 1.05-2.51.28-.3.61-.38.81-.38h.58c.19 0 .44-.07.69.53.25.6.85 2.08.93 2.23.07.15.12.33.02.53-.1.2-.15.32-.3.5-.15.17-.31.39-.44.52-.15.15-.31.32-.13.62.17.3.78 1.28 1.67 2.07 1.15 1.02 2.11 1.34 2.41 1.49.3.15.47.13.65-.08.17-.2.75-.87.95-1.17.2-.3.4-.25.67-.15.28.1 1.75.83 2.05.98.3.15.5.22.57.35.08.12.08.7-.17 1.4"
-								/>
-							</svg>
-							WhatsApp: 47 98924-8045
+							Quero conversar
 						</a>
-						<a class="btn btn-secondary" href={`mailto:${email}`}>
-							<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
-								<path
-									fill="none"
-									stroke="currentColor"
-									stroke-width="1.8"
-									stroke-linecap="round"
-									stroke-linejoin="round"
-									d="M4 5h16v14H4zM4 7l8 6 8-6"
-								/>
-							</svg>
-							aderismartins.f@gmail.com
-						</a>
+						<a class="btn btn-secondary" href={`mailto:${email}`}>Conhecer o Contratos IA</a>
 					</div>
 				</div>
 			</section>
@@ -373,9 +386,13 @@ const navLinks = [
 			<div class="container footer-inner">
 				<p>&copy; 2026 Martinsys. Todos os direitos reservados.</p>
 				<nav class="footer-nav" aria-label="Menu do rodapé">
-					<a href="#servicos">Serviços</a>
-					<a href="#produtos">Produtos</a>
-					<a href="#sobre">Sobre</a>
+					<a href="#inicio">Início</a>
+					<a href="#contratos-ia">Contratos IA</a>
+					<a href="#capacidades">Capacidades de IA</a>
+					<a href="#como-workamos">Como trabalhamos</a>
+					<a href="#cases">Cases</a>
+					<a href="#tecnologia">Tecnologia</a>
+					<a href="#seguranca">Segurança</a>
 					<a href="#contato">Contato</a>
 				</nav>
 			</div>
@@ -401,7 +418,6 @@ const navLinks = [
 		</script>
 	</body>
 </html>
-
 <style is:global>
 	:root {
 		--c-bg: #0b1220;
@@ -486,9 +502,7 @@ const navLinks = [
 		top: 12px;
 		text-decoration: none;
 	}
-</style>
 
-<style>
 	.site-header {
 		position: sticky;
 		top: 0;
