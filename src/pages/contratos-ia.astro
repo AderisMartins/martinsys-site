@@ -675,6 +675,17 @@ const navLinks = [
 		gap: 14px;
 	}
 
+	@media (max-width: 860px) {
+		.hero-cta {
+			gap: 12px;
+		}
+
+		.btn {
+			padding: 12px 20px;
+			font-size: 0.9rem;
+		}
+	}
+
 	.btn {
 		display: inline-flex;
 		align-items: center;
@@ -786,6 +797,16 @@ const navLinks = [
 		font-size: 0.85rem;
 		text-transform: uppercase;
 		letters-spacing: 0.5px;
+	}
+
+	@media (max-width: 860px) {
+		.stat-number {
+			font-size: 2.2rem;
+		}
+
+		.stat-label {
+			font-size: 0.75rem;
+		}
 	}
 
 	.risk-example {
@@ -935,6 +956,22 @@ const navLinks = [
 		line-height: 1.5;
 	}
 
+	@media (max-width: 860px) {
+		.comparison-ia {
+			font-size: 0.75rem;
+		}
+	}
+
+	@media (max-width: 860px) {
+		.comparison-list {
+			gap: 12px;
+		}
+
+		.comp-value {
+			font-size: 0.8rem;
+		}
+	}
+
 	.faq-list {
 		margin-top: 24px;
 	}
@@ -950,7 +987,6 @@ const navLinks = [
 		margin-top: 8px;
 		color: var(--c-muted);
 		line-height: 1.6;
-		display: none;
 	}
 
 	.faq-list dt:hover {
@@ -1018,6 +1054,7 @@ const navLinks = [
 
 	.tech-item svg {
 		color: var(--c-accent);
+		flex-shrink: 0;
 	}
 
 	.ai-deployment-options {
@@ -1032,6 +1069,20 @@ const navLinks = [
 		border: 1px solid var(--c-border);
 		border-radius: var(--radius);
 		padding: 24px;
+	}
+
+	@media (max-width: 860px) {
+		.ai-option {
+			padding: 20px;
+		}
+
+		.option-label {
+			font-size: 1rem;
+		}
+
+		.ai-option p {
+			font-size: 0.9rem;
+		}
 	}
 
 	.option-label {
@@ -1091,6 +1142,14 @@ const navLinks = [
 		.footer-inner {
 			justify-content: center;
 			text-align: center;
+		}
+
+		.faq-list dt {
+			font-size: 1rem;
+		}
+
+		.faq-list dd {
+			font-size: 0.9rem;
 		}
 	}
 </style>
