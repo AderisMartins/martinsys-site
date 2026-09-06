@@ -1,645 +1,410 @@
 ---
+import Layout from '../layouts/Layout.astro';
+
+const title = 'Martinsys | Engenharia de software e IA para empresas';
+const description =
+	'Transformamos processos complexos em software inteligente, automatizado e mensurável. Engenharia, automação e IA (RAG, agentes, document AI) aplicadas ao seu negócio.';
+
 const whatsappNumber = '5547989248045';
 const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
 	'Olá, Martinsys! Quero saber mais sobre o Contratos IA.'
 )}`;
 const email = 'aderismartins.f@gmail.com';
+const base = import.meta.env.BASE_URL;
 
-const navLinks = [
-	{ href: '#inicio', label: 'Início' },
-	{ href: '#contratos-ia', label: 'Contratos IA' },
-	{ href: '#capacidades', label: 'Capacidades de IA' },
-	{ href: '#como-workamos', label: 'Como trabalhamos' },
-	{ href: '#cases', label: 'Cases' },
-	{ href: '#tecnologia', label: 'Tecnologia' },
-	{ href: '#seguranca', label: 'Segurança' },
-	{ href: '#contato', label: 'Contato' },
+const methodSteps = [
+	{
+		icon: 'M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6M9 15l3-3 3 3M12 6l3-3 3 3',
+		title: 'Descoberta',
+		text: 'Entendemos o processo e o problema real do seu negócio, com os dados que importam em mãos.',
+	},
+	{
+		icon: 'M4 6h16M4 12h16M4 18h16M7 3v4M12 3v4M17 3v4',
+		title: 'Arquitetura',
+		text: 'Desenhamos a solução técnica adequada — simples quando basta, robusta quando precisa.',
+	},
+	{
+		icon: 'M12 2v6m0 0a4 4 0 0 1 4 4h0m-4-4a4 4 0 0 0-4 4h0m4-4V2m8 6a8 8 0 1 1-16 0',
+		title: 'MVP',
+		text: 'Primeira versão funcional do pipeline de processamento, pronta para validar com o cliente.',
+	},
+	{
+		icon: 'M8 9l-4 3 4 3M16 9l4 3-4 3M13 6l-2 12',
+		title: 'Inteligência',
+		text: 'Automação, RAG, agentes e IA aplicada somente onde fazem sentido — sem exageros.',
+	},
+	{
+		icon: 'M12 8v4l3 3m6-3a9 9 0 1 1-3.5-7.1M12 3a9 9 0 0 0 0 18',
+		title: 'Evolução',
+		text: 'Monitoramos, medimos resultados e evoluímos a solução continuamente.',
+	},
+];
+
+const capabilities = [
+	{
+		icon: 'M12 8a3 3 0 1 0-3-3 3 3 0 0 0 3 3Zm0 0v5m0 0a5 5 0 0 1 5 5m-5-5a5 5 0 0 0-5 5',
+		title: 'RAG',
+		text: 'IA conectada ao conhecimento real da empresa. Respostas com fonte, sem alucinações sobre documentos internos.',
+	},
+	{
+		icon: 'M13 2L5.5 13.5H11l-1.5 8.5L17 10.5h-5.5L13 2Z',
+		title: 'Agentes',
+		text: 'Sistemas que executam tarefas e tomam ações dentro de fluxos controlados e auditáveis.',
+	},
+	{
+		icon: 'M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6Z M14 2v6h6M9 13l2 2 4-4',
+		title: 'Document AI',
+		text: 'Extração e interpretação de informações em PDFs, contratos e documentos digitalizados.',
+	},
+	{
+		icon: 'M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm7-3a7 7 0 0 1-14 0m14 0a7 7 0 0 0-14 0',
+		title: 'Automação inteligente',
+		text: 'Processos manuais transformados em workflows automatizados, rastreáveis e mensuráveis.',
+	},
+	{
+		icon: 'M4 14v-4a8 8 0 0 1 16 0v4M4 14a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2h-.5A2 2 0 0 1 2 17v-2a1 1 0 0 1 1-1h1Zm16 0a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h.5a2 2 0 0 0 2-2v-2a1 1 0 0 0-1-1h-1.5Z',
+		title: 'IA local',
+		text: 'Quando segurança e privacidade importam, avaliamos modelos em infraestrutura própria.',
+	},
+	{
+		icon: 'M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7.07-7.07l-1.7 1.7M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7.07 7.07l1.7-1.7',
+		title: 'Integrações',
+		text: 'IA conectada aos sistemas que a empresa já utiliza, sem reinventar a roda.',
+	},
+];
+
+const architectureFlow = [
+	{ group: 'Entradas', items: ['Documentos', 'OCR', 'SQL/APIs'] },
+	{ group: 'Inteligência', items: ['RAG', 'Agentes', 'Embeddings'] },
+	{ group: 'Rodada por', items: ['AI Gateway', 'LLMs', 'Ollama (local)'] },
+	{ group: 'Base', items: ['Java/Spring Boot', 'Python', 'Go'] },
+	{ group: 'Dados', items: ['PostgreSQL', 'pgvector', 'RabbitMQ'] },
+	{ group: 'Entrega', items: ['Docker', 'Kubernetes', 'CI/CD'] },
+];
+
+const securityItems = [
+	{ icon: 'M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4Z', title: 'Criptografia', text: 'Dados protegidos em trânsito e em repouso.' },
+	{ icon: 'M3 7h18v11a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V7Zm9 4v6m-3-2h6', title: 'Controle por organização', text: 'Acesso isolado e auditável por cliente.' },
+	{ icon: 'M3 6h18v13H3V6Zm6 7h6m-6-4h6M3 3h18v3H3V3Z', title: 'Logs e auditoria', text: 'Toda ação registrada para rastreio completo.' },
+	{ icon: 'M5 19V7a7 7 0 0 1 14 0v12M5 19h14M2 19h20', title: 'Backup', text: 'Cópias regulares com recuperação testada.' },
 ];
 ---
-<!doctype html>
-<html lang="pt-BR">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+json" href={import.meta.env.BASE_URL + 'favicon.svg'} />
-		<meta name="viewport" content="width=device-width" />
-		<meta
-			name="description"
-			content="Martinsys — Engenharia de software e IA para automatizar processos empresariais. Transformamos processos complexos em software inteligente, automatizado e mensurável."
-		/>
-		<meta name="generator" content={Astro.generator} />
-		<title>Martinsys | Software inteligente e IA para empresas</title>
-	</head>
-	<body>
-		<a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
 
-		<header class="site-header">
-			<div class="container header-inner">
-				<a class="brand" href="#inicio" aria-label="Martinsys — voltar ao início">
-					<svg viewBox="0 0 32 32" width="28" height="28" aria-hidden="true">
-						<path
-							d="M5 26V6l11 14L27 6v20"
-							fill="none"
-							stroke="url(#brand-grad)"
-							stroke-width="4"
-							stroke-linecap="round"
-							stroke-linejoin="round"
-						/>
-						<defs>
-							<linearGradient id="brand-grad" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
-								<stop stop-color="#3f8cff" />
-								<stop offset="1" stop-color="#8b5cf6" />
-							</linearGradient>
-						</defs>
-					</svg>
-					<span>Martinsys</span>
-				</a>
-
-				<nav class="main-nav" aria-label="Navegação principal">
-					<button
-						class="menu-toggle"
-						type="button"
-						aria-expanded="false"
-						aria-controls="menu-links"
-						aria-label="Abrir menu de navegação"
-					>
-						<span class="menu-bar"></span>
-						<span class="menu-bar"></span>
-						<span class="menu-bar"></span>
-					</button>
-					<ul id="menu-links" class="menu-links">
-						{navLinks.map((link) => <li><a href={link.href}>{link.label}</a></li>)}
-					</ul>
-				</nav>
+<Layout title={title} description={description} page="home">
+	<section class="hero">
+		<div class="hero-bg" aria-hidden="true"></div>
+		<div class="container hero-inner">
+			<div class="hero-copy">
+				<p class="eyebrow">
+					<span class="eyebrow-dot" aria-hidden="true"></span>
+					Engenharia de software · IA aplicada
+				</p>
+				<h1>
+					Software inteligente para transformar processos complexos em
+					<span class="grad-text">resultados reais.</span>
+				</h1>
+				<p class="hero-sub">
+					A Martinsys combina engenharia, automação e inteligência artificial para criar sistemas que
+					leem documentos, automatizam tarefas e ajudam sua empresa a decidir melhor.
+				</p>
+				<div class="hero-cta">
+					<a class="btn btn-primary btn-lg" href={`${base}contratos-ia/`}>
+						Conhecer o Contratos IA
+						<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+							<path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6" />
+						</svg>
+					</a>
+					<a class="btn btn-secondary btn-lg" href={whatsappLink} target="_blank" rel="noopener">
+						Falar com um especialista
+					</a>
+				</div>
+				<ul class="hero-trust" aria-label="Diferenciais">
+					<li>Automação de ponta a ponta</li>
+					<li>IA com fonte verificável</li>
+					<li>Entrega medida por resultado</li>
+				</ul>
 			</div>
-		</header>
 
-		<main id="conteudo">
-			<section id="inicio" class="hero">
-				<div class="hero-bg" aria-hidden="true"></div>
-				<div class="container hero-inner">
-					<h1>Software inteligente para transformar processos complexos em resultados.</h1>
-					<p class="hero-sub">
-						A Martinsys combina engenharia de software, automação e inteligência artificial para criar sistemas que entendem dados, automatizam tarefas e ajudam sua empresa a tomar decisões melhores.
-					</p>
-					<div class="hero-cta">
-						<a class="btn btn-primary" href="#contratos-ia">Conhecer o Contratos IA</a>
-						<a class="btn btn-secondary" href={whatsappLink} target="_blank" rel="noopener">
-							Falar com um especialista
-						</a>
+			<div class="hero-visual" aria-hidden="true">
+				<div class="app-window">
+					<div class="window-bar">
+						<span></span>
+						<span></span>
+						<span></span>
+						<div class="window-title">Contratos IA · visão geral</div>
+					</div>
+					<div class="window-body">
+						<div class="win-stats">
+							<div class="win-stat">
+								<span class="win-stat-value">1.284</span>
+								<span class="win-stat-label">Contratos analisados</span>
+							</div>
+							<div class="win-stat">
+								<span class="win-stat-value">47</span>
+								<span class="win-stat-label">Renovações próximas</span>
+							</div>
+							<div class="win-stat">
+								<span class="win-stat-value win-stat-warn">23</span>
+								<span class="win-stat-label">Alto risco</span>
+							</div>
+						</div>
+						<ul class="win-risks">
+							<li>
+								<span class="pill pill-warn">ALTO</span>
+								<span class="win-risk-text">Renovação automática sem aviso prévio</span>
+							</li>
+							<li>
+								<span class="pill pill-danger">CRÍTICO</span>
+								<span class="win-risk-text">Responsabilidade ilimitada · Cláusula 8.2</span>
+							</li>
+						</ul>
+						<div class="win-chat">
+							<div class="win-chat-q">Quais riscos valem revisão?</div>
+							<div class="win-chat-a">
+								Foram identificados 3 pontos: multa não especificada, renovação automática sem aviso e
+								limitação de responsabilidade ampla.
+							</div>
+						</div>
 					</div>
 				</div>
-			</section>
+				<div class="hero-orb hero-orb-1"></div>
+				<div class="hero-orb hero-orb-2"></div>
+			</div>
+		</div>
+	</section>
 
-			<section id="problema" class="section section-alt">
-				<div class="container">
-					<p class="eyebrow">Problema empresarial</p>
-					<h2 class="section-title">Processos complexos perdem-se em documentos.</h2>
-					<p>
-						Empresas lidam com um volume crescente de contratos e documentos regulatórios. A análise manual é lenta, propensa a erros e impossível de escalar. Informações críticas ficam escondidas, prazos são perdidos e riscos passam despercebidos até que seja tarde demais.
-					</p>
-				</div>
-			</section>
-
-			<section id="como-workamos" class="section">
-				<div class="container">
-					<p class="eyebrow">Como trabalhamos</p>
-					<h2 class="section-title">Do problema à solução inteligente</h2>
-					<div class="card-grid">
-						<article class="card">
-							<div class="card-icon" aria-hidden="true">
-								<svg viewBox="0 0 24 24" width="26" height="26">
-									<path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M8 9l-4 3 4 3M16 9l4 3-4 3M13 6l-2 12"/>
-								</svg>
-							</div>
-							<h3>01 Descoberta</h3>
-							<p>Entendemos o processo e o problema do seu negócio.</p>
-						</article>
-						<article class="card">
-							<div class="card-icon" aria-hidden="true">
-								<svg viewBox="0 0 24 24" width="26" height="26">
-									<path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M12 22v-4c3 7-9 3-9-10s-6-13 6-13c3 0 6 4 6 10v4"/>
-								</svg>
-							</div>
-							<h3>02 Arquitetura</h3>
-							<p>Definimos a solução técnica adequada às suas necessidades.</p>
-						</article>
-						<article class="card">
-							<div class="card-icon" aria-hidden="true">
-								<svg viewBox="0 0 24 24" width="26" height="26">
-									<path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M3.5 5.5h17v13h-17zM3.5 9.5h17M7 16h4"/>
-								</svg>
-							</div>
-							<h3>03 MVP</h3>
-							<p>Primeira versão funcional do pipeline de processamento.</p>
-						</article>
-						<article class="card">
-							<div class="card-icon" aria-hidden="true">
-								<svg viewBox="0 0 24 24" width="26" height="26">
-									<path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M9 18V5l12-2v13"/>
-								</svg>
-							</div>
-							<h3>04 Inteligência</h3>
-							<p>Automação, RAG, agentes ou IA aplicada quando fizer sentido.</p>
-						</article>
-						<article class="card">
-							<div class="card-icon" aria-hidden="true">
-								<svg viewBox="0 0 24 24" width="26" height="26">
-									<path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M12 3a4 4 0 0 1 4 4c0 1.5-.8 2.6-1 3-.7 1.6.3 3 1.5 3.8 1.4.9 2.5 2.2 2.5 4.2v2H5v-2c0-2 1.1-3.3 2.5-4.2 1.2-.8 2.2-2.2 1.5-3.8-.2-.4-1-1.5-1-3a4 4 0 0 1 4-4M8.5 20a3.5 3.5 0 0 0 7 0"/>
-								</svg>
-							</div>
-							<h3>05 Evolução</h3>
-							<p>Monitoramos, medimos e evoluímos a solução continuamente.</p>
-						</article>
+	<section id="problema" class="section section-alt">
+		<div class="container">
+			<div class="section-head center">
+				<p class="eyebrow">O problema</p>
+				<h2 class="section-title">
+					Processos complexos se perdem em <span class="grad-text">documentos.</span>
+				</h2>
+				<p class="section-sub">
+					Contratos, regulamentações e documentos crescem em volume. A análise manual é lenta, propensa a
+					erros e não escala. Prazos são perdidos, riscos ficam escondidos e decisões atrasam.
+				</p>
+			</div>
+			<div class="problem-grid">
+				<article class="card problem-card">
+					<div class="card-title-row">
+						<strong class="problem-no">01</strong>
+						<h3>Volume crescente</h3>
 					</div>
-				</div>
-			</section>
+					<p>O acervo de documentos dobra enquanto a equipe continua a mesma.</p>
+				</article>
+				<article class="card problem-card">
+					<div class="card-title-row">
+						<strong class="problem-no">02</strong>
+						<h3>Análise manual</h3>
+					</div>
+					<p>Horas de leitura repetida para extrair cláusulas, prazos e obrigações.</p>
+				</article>
+				<article class="card problem-card">
+					<div class="card-title-row">
+						<strong class="problem-no">03</strong>
+						<h3>Riscos invisíveis</h3>
+					</div>
+					<p>Multas, renovações automáticas e responsabilidades passam despercebidas.</p>
+				</article>
+			</div>
+		</div>
+	</section>
 
-			<section id="contratos-ia" class="section section-alt">
-				<div class="container">
-					<p class="eyebrow">Flagship</p>
-					<h2 class="section-title">Seus contratos escondem informações importantes. A IA encontra.</h2>
+	<section id="como-trabalhamos" class="section">
+		<div class="container">
+			<div class="section-head">
+				<p class="eyebrow">Como trabalhamos</p>
+				<h2 class="section-title">Do problema à solução inteligente</h2>
+				<p class="section-sub">Um caminho enxuto, guiado por resultado e não por tecnologia.</p>
+			</div>
+			<div class="method-grid">
+				{methodSteps.map((step) => (
+					<article class="card method-card">
+						<span class="method-no">{'0' + (methodSteps.indexOf(step) + 1)}</span>
+						<div class="card-icon" aria-hidden="true">
+							<svg viewBox="0 0 24 24" width="24" height="24">
+								<path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d={step.icon} />
+							</svg>
+						</div>
+						<h3>{step.title}</h3>
+						<p>{step.text}</p>
+					</article>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<section id="contratos-ia" class="section section-alt">
+		<div class="container">
+			<div class="split-band">
+				<div class="split-copy">
+					<p class="eyebrow">Produto em destaque</p>
+					<h2 class="section-title">
+						Seus contratos escondem informações importantes. <span class="grad-text">A IA encontra.</span>
+					</h2>
 					<p class="section-sub">
-						O Contratos IA transforma documentos complexos em informações estruturadas, riscos, obrigações, prazos e respostas acionáveis.
-					</p>
-					<div class="hero-cta">
-						<a class="btn btn-primary" href="#demo">Solicitar demonstração</a>
-					</div>
-				</div>
-			</section>
-
-			<section id="demo-visual" class="section">
-				<div class="container">
-					<p class="eyebrow">Demonstração visual do produto</p>
-					<h2 class="section-title">Do PDF à decisão em segundos</h2>
-					<div class="demo-visual-wrapper">
-						<div class="pdf-viewer" aria-label="Visualizador de PDF com cláusulas destacadas">
-							<div class="pdf-page">
-								<div class="pdf-header">
-									<svg viewBox="0 0 600 800" width="100%" height="auto" aria-hidden="true">
-										<rect width="600" height="800" rx="8" fill="#1a2a4a"/>
-										<path d="M600 0L0 0L0 800Z" fill="#0f1a2c"/>
-										<!-- Clause highlights -->
-										<rect x="100" y="150" width="400" height="60" rx="4" fill="rgba(251, 191, 36, 0.25)"/>
-										<rect x="100" y="280" width="400" height="50" rx="4" fill="rgba(251, 191, 36, 0.25)"/>
-										<rect x="100" y="430" width="300" height="55" rx="4" fill="rgba(251, 191, 36, 0.25)"/>
-										<!-- Text lines -->
-										<line x1="100" y1="170" x2="500" y2="170" stroke="rgba(251, 191, 36, 0.5)" stroke-width="1"/>
-										<line x1="100" y1="220" x2="500" y2="220" stroke="rgba(251, 191, 36, 0.5)" stroke-width="1"/>
-										<line x1="100" y1="290" x2="500" y2="290" stroke="rgba(251, 191, 36, 0.5)" stroke-width="1"/>
-										<line x1="100" y1="360" x2="500" y2="360" stroke="rgba(251, 191, 36, 0.5)" stroke-width="1"/>
-										<line x1="100" y1="445" x2="500" y2="445" stroke="rgba(251, 191, 36, 0.5)" stroke-width="1"/>
-										<line x1="100" y1="520" x2="500" y2="520" stroke="rgba(251, 191, 36, 0.5)" stroke-width="1"/>
-										<line x1="100" y1="600" x2="500" y2="600" stroke="rgba(251, 191, 36, 0.5)" stroke-width="1"/>
-										<line x1="100" y1="680" x2="500" y2="680" stroke="rgba(251, 191, 36, 0.5)" stroke-width="1"/>
-									</svg>
-								</div>
-								<div class="pdf-title">Contrato de Prestação de Serviços</div>
-							</div>
-						</div>
-
-						<div class="ai-analysis-panel">
-							<div class="panel-header">
-								<h3>ANÁLISE DO CONTRATO</h3>
-							</div>
-							<div class="risk-score">
-								<span>Risco geral</span>
-								<span class="risk-level">████████░░ 78/100</span>
-								<span class="risk-label">ALTO RISCO</span>
-							</div>
-							<ul class="risk-bullets">
-								<li>Multa contratual</li>
-								<li>Renovação automática</li>
-								<li>Limitação de responsabilidade</li>
-							</ul>
-							<div class="risk-datas">
-								<span>12/09/2026 Renovação</span>
-								<span>28/10/2026 Aviso prévio</span>
-							</div>
-							<div class="obligations">
-								<span>12 obrigações identificadas</span>
-							</div>
-							<div class="contract-value">
-								<span>R$ 250.000,00</span>
-							</div>
-							<div class="chat-window">
-								<div class="chat-header">
-									<strong>Quais são os principais riscos deste contrato?</strong>
-								</div>
-								<div class="chat-response">
-									Foram identificados 3 pontos que merecem revisão: (1) multa contratual não especificada, (2) renovação automática sem aviso prévio, (3) limitação de responsabilidade ampla.
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="demo-pipeline">
-						<div class="pipeline-step">01 UPLOAD (PDF/DOCX/documento digitalizado)</div>
-						<div class="pipeline-step">02 INGESTÃO (OCR + parsing + normalização)</div>
-						<div class="pipeline-step">03 IA (extração + classificação + RAG)</div>
-						<div class="pipeline-step">04 ANÁLISE (riscos + cláusulas + obrigações)</div>
-						<div class="pipeline-step">05 INSIGHTS (resumo + alertas + perguntas)</div>
-						<div class="pipeline-step">06 AÇÃO (decisão + acompanhamento + relatório)</div>
-					</div>
-				</div>
-			</section>
-
-			<section id="capacidades" class="section">
-				<div class="container">
-					<p class="eyebrow">Capacidades de IA</p>
-					<h2 class="section-title">IA que trabalha com seus dados</h2>
-					<p>
-						A Martinsys desenvolve soluções capazes de interpretar documentos, consultar conhecimento interno, encontrar padrões, executar tarefas e integrar inteligência diretamente aos processos da empresa.
-					</p>
-					<div class="capabilities-grid">
-						<article class="card capability-card">
-							<div class="card-icon" aria-hidden="true">
-								<svg viewBox="0 0 24 24" width="26" height="26">
-									<path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M12 10v6m0 0v6m0-6h6m-6 0H6"/>
-								</svg>
-							</div>
-							<h3>RAG</h3>
-							<p>IA conectada ao conhecimento real da empresa. Pesquisa sem alucinações across documentos internos.</p>
-						</article>
-						<article class="card capability-card">
-							<div class="card-icon" aria-hidden="true">
-								<svg viewBox="0 0 24 24" width="26" height="26">
-									<path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-								</svg>
-							</div>
-							<h3>Agentes</h3>
-							<p>Sistemas capazes de executar tarefas e tomar ações dentro de fluxos controlados.</p>
-						</article>
-						<article class="card capability-card">
-							<div class="card-icon" aria-hidden="true">
-								<svg viewBox="0 0 24 24" width="26" height="26">
-									<path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 3a5 5 0 0 1 5 5h2M12 12l8 8"/>
-								</svg>
-							</div>
-							<h3>Document AI</h3>
-							<p>Extração e interpretação de informações em PDFs, contratos e documentos.</p>
-						</article>
-						<article class="card capability-card">
-							<div class="card-icon" aria-hidden="true">
-								<svg viewBox="0 0 24 24" width="26" height="26">
-									<path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M12 3a4 4 0 0 1 4 4c0 1.5-.8 2.6-1 3-.7 1.6.3 3 1.5 3.8 1.4.9 2.5 2.2 2.5 4.2v2H5v-2c0-2 1.1-3.3 2.5-4.2 1.2-.8 2.2-2.2 1.5-3.8-.2-.4-1-1.5-1-3a4 4 0 0 1 4-4M8.5 20a3.5 3.5 0 0 0 7 0"/>
-								</svg>
-							</div>
-							<h3>Automação inteligente</h3>
-							<p>Processos manuais transformados em workflows automatizados.</p>
-						</article>
-						<article class="card capability-card">
-							<div class="card-icon" aria-hidden="true">
-								<svg viewBox="0 0 24 24" width="26" height="26">
-									<path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M10 13a9 9 0 1 1-7.5 13.08m0-13.08a9 9 0 1 1-7.5 13.08M16 3a5 5 0 0 1 5 5h-2M12 8l-4 9 9 3"/>
-								</svg>
-							</div>
-							<h3>IA local</h3>
-							<p>Quando segurança, privacidade ou controle forem importantes, avaliar modelos em infraestrutura própria.</p>
-						</article>
-						<article class="card capability-card">
-							<div class="card-icon" aria-hidden="true">
-								<svg viewBox="0 0 24 24" width="26" height="26">
-									<path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M12 10v6m0 0v6m0-6h6m-6 0H6"/>
-								</svg>
-							</div>
-							<h3>Integrações</h3>
-							<p>IA conectada aos sistemas que a empresa já utiliza.</p>
-						</article>
-					</div>
-				</div>
-			</section>
-
-			<section id="cases" class="section section-alt">
-				<div class="container">
-					<p class="eyebrow">Cases/provas</p>
-					<h2 class="section-title">Tecnologia aplicada a problemas reais</h2>
-					<p>
-						Only real cases. Contratos IA: Problema: grande volume de contratos e análise manual; Solução: pipeline de ingestão + extração + RAG + análise de riscos; Tecnologias: Java · Python · PostgreSQL · pgvector · RabbitMQ · LLM; Resultado: informações estruturadas e pesquisáveis a partir dos documentos.
+						O Contratos IA transforma documentos complexos em informações estruturadas, riscos, obrigações,
+						prazos e respostas acionáveis — cada dado com fonte, página e cláusula.
 					</p>
 				</div>
-			</section>
-
-			<section id="tecnologia" class="section">
-				<div class="container">
-					<p class="eyebrow">Arquitetura e tecnologia</p>
-					<h2 class="section-title">Arquitetura MARTINSYS AI</h2>
-					<div class="architecture-diagram">
-						<div class="ai-block">MARTINSYS AI</div>
-						<div class="arrow">→</div>
-						<div class="component-group">
-							<div class="component">Document</div>
-							<div class="component">RAG</div>
-							<div class="component">Agents</div>
-						</div>
-						<div class="arrow">→</div>
-						<div class="gateway-group">
-							<div class="gateway">OCR</div>
-							<div class="gateway">Embeddings</div>
-							<div class="gateway">Tools</div>
-						</div>
-						<div class="arrow">→</div>
-						<div class="ai-gateway">AI Gateway</div>
-						<div class="arrow">→</div>
-						<div class="tech-stack">
-							<div class="tech-item">Java/Spring Boot</div>
-							<div class="tech-item">Python</div>
-							<div class="tech-item">Go</div>
-							<div class="tech-item">PostgreSQL</div>
-							<div class="tech-item">pgvector</div>
-							<div class="tech-item">RabbitMQ</div>
-							<div class="tech-item">Docker</div>
-							<div class="tech-item">Kubernetes</div>
-							<div class="tech-item">Ollama</div>
-							<div class="tech-item">LLMs</div>
-						</div>
-					</div>
+				<div class="split-actions">
+					<a class="btn btn-primary btn-lg" href={`${base}contratos-ia/`}>Ver demonstração</a>
+					<a class="btn btn-secondary btn-lg" href={whatsappLink} target="_blank" rel="noopener">
+						Falar com um especialista
+					</a>
 				</div>
-			</section>
-
-			<section id="seguranca" class="section">
-				<div class="container">
-					<p class="eyebrow">Segurança</p>
-					<h2 class="section-title">Seus contratos continuam sendo seus.</h2>
-					<p>
-						Contratos IA arquitetura: criptografia em trânsito e em repouso, controle de acesso por organização, logs, auditoria, backup, segregação por organização. Apresentamos apenas o que é realmente implementado: não inventamos certificações, padrões ou reivindicações absolutas ("100% seguro").
-					</p>
-				</div>
-			</section>
-
-			<section id="contato" class="section section-alt">
-				<div class="container contact-box">
-					<p class="eyebrow">Contato</p>
-					<h2 class="section-title">Qual processo da sua empresa poderia ser automatizado com IA?</h2>
-					<p>
-						Conte o problema. A Martinsys ajuda a transformar a ideia em uma solução de software real.
-					</p>
-					<div class="contact-actions">
-						<a class="btn btn-primary" href={whatsappLink} target="_blank" rel="noopener">
-							Quero conversar
-						</a>
-						<a class="btn btn-secondary" href={`mailto:${email}`}>Conhecer o Contratos IA</a>
-					</div>
-				</div>
-			</section>
-		</main>
-
-		<footer class="site-footer">
-			<div class="container footer-inner">
-				<p>&copy; 2026 Martinsys. Todos os direitos reservados.</p>
-				<nav class="footer-nav" aria-label="Menu do rodapé">
-					<a href="#inicio">Início</a>
-					<a href="#contratos-ia">Contratos IA</a>
-					<a href="#capacidades">Capacidades de IA</a>
-					<a href="#como-workamos">Como trabalhamos</a>
-					<a href="#cases">Cases</a>
-					<a href="#tecnologia">Tecnologia</a>
-					<a href="#seguranca">Segurança</a>
-					<a href="#contato">Contato</a>
-				</nav>
 			</div>
-		</footer>
+		</div>
+	</section>
 
-		<script>
-			const toggle = document.querySelector('.menu-toggle');
-			const links = document.querySelector('.menu-links');
-			if (toggle && links) {
-				toggle.addEventListener('click', () => {
-					const open = toggle.getAttribute('aria-expanded') === 'true';
-					toggle.setAttribute('aria-expanded', String(!open));
-					links.classList.toggle('menu-open', !open);
-					toggle.setAttribute('aria-label', (open ? 'Abrir' : 'Fechar') + ' menu de navegação');
-				});
-				links.addEventListener('click', (ev) => {
-					if (ev.target instanceof HTMLAnchorElement && window.innerWidth <= 760) {
-						toggle.setAttribute('aria-expanded', 'false');
-						links.classList.remove('menu-open');
-					}
-				});
-			}
-		</script>
-	</body>
-</html>
-<style is:global>
-	:root {
-		--c-bg: #0b1220;
-		--c-surface: #0f1a2c;
-		--c-surface-2: #13233b;
-		--c-border: #1e3352;
-		--c-text: #e9eef7;
-		--c-muted: #9db2ca;
-		--c-accent: #3f8cff;
-		--c-accent-2: #8b5cf6;
-		--c-whatsapp: #25d366;
-		--c-danger: #f59e0b;
-		--radius: 14px;
-		--font:
-			ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
-			sans-serif;
+	<section id="capacidades" class="section">
+		<div class="container">
+			<div class="section-head center">
+				<p class="eyebrow">Capacidades de IA</p>
+				<h2 class="section-title">IA que trabalha com seus dados</h2>
+				<p class="section-sub">
+					Soluções que interpretam documentos, consultam conhecimento interno, encontram padrões e integram
+					inteligência diretamente aos processos da empresa.
+				</p>
+			</div>
+			<div class="cap-grid">
+				{capabilities.map((cap) => (
+					<article class="card cap-card">
+						<div class="card-icon" aria-hidden="true">
+							<svg viewBox="0 0 24 24" width="24" height="24">
+								<path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d={cap.icon} />
+							</svg>
+						</div>
+						<h3>{cap.title}</h3>
+						<p>{cap.text}</p>
+					</article>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<section id="cases" class="section section-alt">
+		<div class="container">
+			<div class="section-head">
+				<p class="eyebrow">Case real</p>
+				<h2 class="section-title">Tecnologia aplicada a um problema real</h2>
+			</div>
+			<div class="card case-card">
+				<div class="case-grid">
+					<div class="case-block">
+						<h3>Problema</h3>
+						<p>Grande volume de contratos com análise 100% manual, prazos e riscos escondidos.</p>
+					</div>
+					<div class="case-block">
+						<h3>Solução</h3>
+						<p>Pipeline de ingestão + extração + RAG + análise de riscos com citações verificáveis.</p>
+					</div>
+					<div class="case-block">
+						<h3>Tecnologias</h3>
+						<p>Java · Python · PostgreSQL · pgvector · RabbitMQ · LLMs</p>
+					</div>
+					<div class="case-block">
+						<h3>Resultado</h3>
+						<p>Informações estruturadas e pesquisáveis a partir de documentos brutos.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section id="arquitetura" class="section">
+		<div class="container">
+			<div class="section-head center">
+				<p class="eyebrow">Arquitetura e tecnologia</p>
+				<h2 class="section-title">Uma base sólida por trás da inteligência</h2>
+				<p class="section-sub">Tecnologias apresentadas apenas quando são realmente usadas na solução.</p>
+			</div>
+			<div class="arch-flow">
+				{architectureFlow.map((node) => (
+					<div class="arch-node">
+						<div class="arch-node-label">{node.group}</div>
+						<div class="arch-chips">
+							{node.items.map((item) => (
+								<span class="chip">{item}</span>
+							))}
+						</div>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<section id="seguranca" class="section section-alt">
+		<div class="container">
+			<div class="section-head">
+				<p class="eyebrow">Segurança</p>
+				<h2 class="section-title">Seus contratos continuam sendo seus.</h2>
+				<p class="section-sub">
+					Apresentamos apenas o que é realmente implementado — sem certificações inventadas nem
+					reivindicações absolutas.
+				</p>
+			</div>
+			<div class="security-grid">
+				{securityItems.map((item) => (
+					<article class="card security-card">
+						<div class="card-icon" aria-hidden="true">
+							<svg viewBox="0 0 24 24" width="24" height="24">
+								<path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d={item.icon} />
+							</svg>
+						</div>
+						<div>
+							<h3>{item.title}</h3>
+							<p>{item.text}</p>
+						</div>
+					</article>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<section id="contato" class="section">
+		<div class="container">
+			<div class="cta-band">
+				<p class="eyebrow">Contato</p>
+				<h2 class="section-title">Qual processo da sua empresa poderia ser automatizado com IA?</h2>
+				<p class="section-sub">
+					Conte o problema. A Martinsys ajuda a transformar a ideia em uma solução de software real.
+				</p>
+				<div class="contact-actions">
+					<a class="btn btn-primary btn-lg" href={whatsappLink} target="_blank" rel="noopener">
+						Quero conversar no WhatsApp
+					</a>
+					<a class="btn btn-secondary btn-lg" href={`mailto:${email}`}>Falar por e-mail</a>
+				</div>
+			</div>
+		</div>
+	</section>
+</Layout>
+
+<style>
+	.eyebrow-dot {
+		width: 8px;
+		height: 8px;
+		border-radius: 50%;
+		background: var(--grad);
 	}
 
-	* {
-		box-sizing: border-box;
-		margin: 0;
-		padding: 0;
-	}
-
-	html {
-		scroll-behavior: smooth;
-	}
-
-	body {
-		font-family: var(--font);
-		background: var(--c-bg);
-		color: var(--c-text);
-		line-height: 1.6;
-		-webkit-font-smoothing: antialiased;
-	}
-
-	@media (prefers-reduced-motion: reduce) {
-		html {
-			scroll-behavior: auto;
-		}
-		* {
-			animation: none !important;
-			transition: none !important;
-		}
-	}
-
-	.container {
-		max-width: 1080px;
-		margin: 0 auto;
-		padding: 0 24px;
-	}
-
-	a {
-		color: var(--c-accent);
-		text-decoration: none;
-	}
-
-	a:hover {
-		text-decoration: underline;
-	}
-
-	:focus-visible {
-		outline: 3px solid var(--c-accent);
-		outline-offset: 3px;
-		border-radius: 4px;
-	}
-
-	.skip-link {
-		position: absolute;
-		top: -60px;
-		left: 16px;
-		z-index: 100;
-		padding: 10px 16px;
-		background: var(--c-accent);
-		color: #fff;
-		border-radius: 8px;
-		font-weight: 600;
-		transition: top 0.15s ease;
-	}
-
-	.skip-link:focus {
-		top: 12px;
-		text-decoration: none;
-	}
-
-	.site-header {
-		position: sticky;
-		top: 0;
-		z-index: 50;
-		background: rgba(11, 18, 32, 0.88);
-		backdrop-filter: blur(10px);
-		border-bottom: 1px solid var(--c-border);
-	}
-
-	.header-inner {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		gap: 16px;
-		height: 68px;
-	}
-
-	.brand {
-		display: inline-flex;
-		align-items: center;
-		gap: 10px;
-		color: var(--c-text);
-		font-weight: 700;
-		font-size: 1.25rem;
-		letter-spacing: 0.2px;
-	}
-
-	.brand:hover {
-		text-decoration: none;
-	}
-
-	.main-nav {
-		display: flex;
-		align-items: center;
-	}
-
-	.menu-links {
-		display: flex;
-		align-items: center;
-		gap: 4px;
-		list-style: none;
-	}
-
-	.menu-links a {
-		display: block;
-		padding: 8px 14px;
-		border-radius: 8px;
-		color: var(--c-muted);
-		font-weight: 500;
-		font-size: 0.95rem;
-	}
-
-	.menu-links a:hover {
-		color: var(--c-text);
-		background: var(--c-surface-2);
-		text-decoration: none;
-	}
-
-	.menu-toggle {
-		display: none;
-		flex-direction: column;
-		justify-content: center;
-		gap: 5px;
-		width: 44px;
-		height: 44px;
-		padding: 10px;
-		background: none;
-		border: 1px solid var(--c-border);
-		border-radius: 10px;
-		cursor: pointer;
-	}
-
-	.menu-toggle .menu-bar {
-		display: block;
-		height: 2px;
-		width: 100%;
-		background: var(--c-text);
-		border-radius: 2px;
-		transition: transform 0.2s ease, opacity 0.2s ease;
-	}
-
-	.menu-toggle[aria-expanded='true'] .menu-bar:nth-child(1) {
-		transform: translateY(7px) rotate(45deg);
-	}
-
-	.menu-toggle[aria-expanded='true'] .menu-bar:nth-child(2) {
-		opacity: 0;
-	}
-
-	.menu-toggle[aria-expanded='true'] .menu-bar:nth-child(3) {
-		transform: translateY(-7px) rotate(-45deg);
-	}
-
-	@media (max-width: 760px) {
-		.menu-toggle {
-			display: flex;
-		}
-
-		.menu-links {
-			position: absolute;
-			top: 68px;
-			left: 0;
-			right: 0;
-			flex-direction: column;
-			align-items: stretch;
-			gap: 4px;
-			margin: 0;
-			padding: 12px 16px 16px;
-			background: var(--c-surface);
-			border-bottom: 1px solid var(--c-border);
-			display: none;
-		}
-
-		.menu-links.menu-open {
-			display: flex;
-		}
-
-		.menu-links a {
-			padding: 12px 14px;
-		}
-	}
-
+	/* Hero */
 	.hero {
 		position: relative;
 		overflow: hidden;
-		padding: 112px 0 96px;
-		text-align: center;
-		border-bottom: 1px solid var(--c-border);
+		padding: 96px 0 104px;
+		border-bottom: 1px solid var(--border);
 	}
 
 	.hero-bg {
 		position: absolute;
 		inset: 0;
 		background:
-			radial-gradient(42% 55% at 20% 12%, rgba(63, 140, 255, 0.18), transparent 70%),
-			radial-gradient(42% 55% at 82% 30%, rgba(139, 92, 246, 0.16), transparent 70%),
-			linear-gradient(180deg, #0d1626, var(--c-bg) 78%);
+			radial-gradient(52% 60% at 16% 8%, rgba(79, 70, 229, 0.14), transparent 72%),
+			radial-gradient(44% 56% at 86% 20%, rgba(8, 145, 178, 0.12), transparent 70%),
+			linear-gradient(180deg, #f8faff, var(--bg-0) 80%);
 		pointer-events: none;
 	}
 
@@ -647,133 +412,259 @@ const navLinks = [
 		content: '';
 		position: absolute;
 		inset: 0;
-		background-image: linear-gradient(var(--c-border) 1px, transparent 1px),
-			linear-gradient(90deg, var(--c-border) 1px, transparent 1px);
-		background-size: 44px 44px;
-		opacity: 0.35;
-		-webkit-mask-image: radial-gradient(60% 60% at 50% 0%, #000 30%, transparent 78%);
-		mask-image: radial-gradient(60% 60% at 50% 0%, #000 30%, transparent 78%);
+		background-image: linear-gradient(var(--border) 1px, transparent 1px),
+			linear-gradient(90deg, var(--border) 1px, transparent 1px);
+		background-size: 46px 46px;
+		opacity: 0.5;
+		-webkit-mask-image: radial-gradient(70% 70% at 50% 0%, #000 30%, transparent 82%);
+		mask-image: radial-gradient(70% 70% at 50% 0%, #000 30%, transparent 82%);
 	}
 
 	.hero-inner {
 		position: relative;
-		max-width: 860px;
+		display: grid;
+		grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+		gap: 56px;
+		align-items: center;
 	}
 
-	.eyebrow {
-		display: inline-block;
-		margin-bottom: 18px;
-		padding: 6px 14px;
-		border: 1px solid var(--c-border);
-		border-radius: 999px;
-		background: var(--c-surface);
-		color: var(--c-accent);
-		font-size: 0.85rem;
-		font-weight: 600;
-		letter-spacing: 0.4px;
-		text-transform: uppercase;
-	}
-
-	.hero h1 {
-		font-size: clamp(2.1rem, 5vw, 3.4rem);
-		line-height: 1.15;
-		letter-spacing: -0.5px;
-		margin-bottom: 20px;
-		background: linear-gradient(100deg, #fff, #cfe2ff 55%, #d7c6ff);
-		-webkit-background-clip: text;
-		background-clip: text;
-		color: transparent;
+	.hero-copy h1 {
+		font-size: clamp(2.2rem, 5vw, 3.5rem);
+		line-height: 1.12;
+		letter-spacing: -1px;
+		margin-bottom: 22px;
 	}
 
 	.hero-sub {
-		max-width: 640px;
-		margin: 0 auto 32px;
-		color: var(--c-muted);
-		font-size: 1.1rem;
+		max-width: 540px;
+		color: var(--muted);
+		font-size: 1.12rem;
+		margin-bottom: 32px;
 	}
 
 	.hero-cta {
 		display: flex;
 		flex-wrap: wrap;
-		justify-content: center;
 		gap: 14px;
+		margin-bottom: 36px;
 	}
 
-	.btn {
-		display: inline-flex;
+	.hero-trust {
+		list-style: none;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 10px 24px;
+		color: var(--ink-2);
+		font-size: 0.92rem;
+		font-weight: 500;
+	}
+
+	.hero-trust li::before {
+		content: '✓';
+		margin-right: 8px;
+		color: var(--ok);
+		font-weight: 700;
+	}
+
+	/* App window */
+	.hero-visual {
+		position: relative;
+	}
+
+	.app-window {
+		position: relative;
+		z-index: 2;
+		border: 1px solid var(--border);
+		border-radius: 20px;
+		background: var(--bg-0);
+		box-shadow: var(--shadow-md);
+		overflow: hidden;
+	}
+
+	.window-bar {
+		display: flex;
 		align-items: center;
-		justify-content: center;
-		gap: 10px;
-		padding: 14px 26px;
-		border-radius: 12px;
-		font-weight: 600;
-		font-size: 1rem;
-		transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+		gap: 8px;
+		padding: 14px 18px;
+		background: var(--bg-1);
+		border-bottom: 1px solid var(--border);
 	}
 
-	.btn:hover {
-		text-decoration: none;
-		transform: translateY(-1px);
+	.window-bar span {
+		width: 11px;
+		height: 11px;
+		border-radius: 50%;
+		background: var(--border-strong);
 	}
 
-	.btn-primary {
-		background: var(--c-accent);
-		color: #fff;
-		box-shadow: 0 8px 24px rgba(63, 140, 255, 0.35);
+	.window-title {
+		margin-left: 8px;
+		color: var(--muted);
+		font-size: 0.8rem;
+		font-weight: 500;
 	}
 
-	.btn-primary:hover {
-		background: #2f7cf2;
+	.window-body {
+		padding: 24px;
 	}
 
-	.btn-secondary {
-		background: var(--c-surface);
-		color: var(--c-text);
-		border: 1px solid var(--c-border);
-	}
-
-	.btn-secondary:hover {
-		background: var(--c-surface-2);
-	}
-
-	.section {
-		padding: 88px 0;
-	}
-
-	.section-alt {
-		background: var(--c-surface);
-		border-top: 1px solid var(--c-border);
-		border-bottom: 1px solid var(--c-border);
-	}
-
-	.section-title {
-		font-size: clamp(1.6rem, 3.4vw, 2.15rem);
-		letter-spacing: -0.4px;
-		line-height: 1.2;
-		margin-bottom: 14px;
-	}
-
-	.section-sub {
-		color: var(--c-muted);
-		margin-bottom: 34px;
-	}
-
-	.card-grid {
+	.win-stats {
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-		gap: 20px;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 12px;
+		margin-bottom: 20px;
 	}
 
+	.win-stat {
+		display: flex;
+		flex-direction: column;
+		gap: 2px;
+		padding: 14px;
+		border: 1px solid var(--border);
+		border-radius: 14px;
+		background: var(--bg-1);
+	}
+
+	.win-stat-value {
+		font-size: 1.7rem;
+		font-weight: 800;
+		letter-spacing: -0.5px;
+		background: var(--grad);
+		-webkit-background-clip: text;
+		background-clip: text;
+		color: transparent;
+	}
+
+	.win-stat-warn {
+		background: none;
+		color: var(--warn);
+		-webkit-text-fill-color: var(--warn);
+	}
+
+	.win-stat-label {
+		color: var(--muted);
+		font-size: 0.74rem;
+		font-weight: 500;
+	}
+
+	.win-risks {
+		list-style: none;
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+		margin-bottom: 18px;
+	}
+
+	.win-risks li {
+		display: flex;
+		align-items: center;
+		gap: 12px;
+		padding: 12px 14px;
+		border: 1px solid var(--border);
+		border-radius: 12px;
+	}
+
+	.pill {
+		flex-shrink: 0;
+		font-size: 0.72rem;
+		font-weight: 700;
+		letter-spacing: 0.4px;
+		padding: 4px 10px;
+		border-radius: 999px;
+	}
+
+	.pill-warn {
+		color: var(--warn);
+		background: rgba(217, 119, 6, 0.12);
+	}
+
+	.pill-danger {
+		color: var(--danger);
+		background: rgba(220, 38, 38, 0.1);
+	}
+
+	.win-risk-text {
+		color: var(--ink-2);
+		font-size: 0.86rem;
+	}
+
+	.win-chat {
+		border: 1px solid var(--border);
+		border-radius: 14px;
+		overflow: hidden;
+	}
+
+	.win-chat-q {
+		padding: 12px 16px;
+		background: var(--bg-1);
+		font-weight: 600;
+		font-size: 0.88rem;
+	}
+
+	.win-chat-a {
+		padding: 12px 16px;
+		color: var(--ink-2);
+		font-size: 0.86rem;
+		border-top: 1px solid var(--border);
+	}
+
+	.hero-orb {
+		position: absolute;
+		z-index: 1;
+		border-radius: 50%;
+		filter: blur(46px);
+		opacity: 0.5;
+	}
+
+	.hero-orb-1 {
+		width: 180px;
+		height: 180px;
+		top: -40px;
+		right: -30px;
+		background: rgba(79, 70, 229, 0.35);
+	}
+
+	.hero-orb-2 {
+		width: 140px;
+		height: 140px;
+		bottom: -30px;
+		left: -24px;
+		background: rgba(8, 145, 178, 0.3);
+	}
+
+	@media (max-width: 900px) {
+		.hero-inner {
+			grid-template-columns: 1fr;
+			gap: 48px;
+		}
+
+		.hero {
+			padding: 64px 0 72px;
+		}
+
+		.hero-copy h1 {
+			font-size: clamp(2rem, 7vw, 2.9rem);
+		}
+
+		.hero-visual {
+			max-width: 480px;
+			margin: 0 auto;
+		}
+	}
+
+	/* Cards */
 	.card {
-		background: var(--c-surface);
-		border: 1px solid var(--c-border);
+		background: var(--bg-0);
+		border: 1px solid var(--border);
 		border-radius: var(--radius);
 		padding: 26px;
-		transition: transform 0.15s ease, border-color 0.15s ease;
+		box-shadow: var(--shadow-sm);
+		transition: transform 0.16s ease, box-shadow 0.16s ease, border-color 0.16s ease;
 	}
 
 	.card:hover {
-		border-color: #2c4a7a;
+		border-color: var(--border-strong);
+		box-shadow: var(--shadow-md);
 		transform: translateY(-3px);
 	}
 
@@ -781,229 +672,213 @@ const navLinks = [
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
-		width: 52px;
-		height: 52px;
-		border-radius: 12px;
-		background: linear-gradient(140deg, rgba(63, 140, 255, 0.18), rgba(139, 92, 246, 0.18));
-		border: 1px solid var(--c-border);
-		color: var(--c-accent);
+		width: 50px;
+		height: 50px;
+		border-radius: 13px;
+		background: var(--grad-soft);
+		border: 1px solid rgba(79, 70, 229, 0.18);
+		color: var(--indigo);
 		margin-bottom: 18px;
 	}
 
 	.card h3 {
-		font-size: 1.15rem;
+		font-size: 1.12rem;
+		letter-spacing: -0.2px;
 		margin-bottom: 8px;
 	}
 
 	.card p {
-		color: var(--c-muted);
-		font-size: 0.96rem;
+		color: var(--muted);
+		font-size: 0.95rem;
 	}
 
-	.product-grid {
+	/* Problem */
+	.problem-grid {
 		display: grid;
-		grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-		gap: 48px;
-		align-items: center;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 20px;
 	}
 
-	.product-visual {
-		display: flex;
-		justify-content: center;
-	}
-
-	.product-window {
-		width: 100%;
-		max-width: 400px;
-		border: 1px solid var(--c-border);
-		border-radius: var(--radius);
-		background: var(--c-bg);
-		box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
-		overflow: hidden;
-	}
-
-	.window-bar {
-		display: flex;
-		gap: 7px;
-		padding: 12px 16px;
-		background: var(--c-surface-2);
-		border-bottom: 1px solid var(--c-border);
-	}
-
-	.window-bar span {
-		width: 11px;
-		height: 11px;
-		border-radius: 50%;
-		background: #2e4a6e;
-	}
-
-	.window-body {
-		padding: 22px;
-	}
-
-	.win-stat-label {
-		color: var(--c-muted);
-		font-size: 0.85rem;
-	}
-
-	.win-stat {
-		font-size: 2.4rem;
-		font-weight: 700;
-		margin: 4px 0 20px;
-	}
-
-	.win-rows {
-		display: flex;
-		flex-direction: column;
-		gap: 12px;
-	}
-
-	.win-row {
+	.card-title-row {
 		display: flex;
 		align-items: center;
-		justify-content: space-between;
 		gap: 12px;
-		padding: 12px 14px;
-		border: 1px solid var(--c-border);
-		border-radius: 10px;
-		background: var(--c-surface);
+		margin-bottom: 10px;
 	}
 
-	.win-pill {
-		font-size: 0.78rem;
-		font-weight: 600;
-		padding: 4px 10px;
-		border-radius: 999px;
-	}
-
-	.win-pill-ok {
-		color: #4ade80;
-		background: rgba(74, 222, 128, 0.12);
-	}
-
-	.win-pill-warn {
-		color: var(--c-danger);
-		background: rgba(245, 158, 11, 0.12);
-	}
-
-	.win-pill-ai {
-		color: var(--c-accent-2);
-		background: rgba(139, 92, 246, 0.14);
-	}
-
-	.win-tag {
-		color: var(--c-muted);
-		font-size: 0.82rem;
-	}
-
-	.product-badge {
-		display: inline-block;
-		margin-bottom: 14px;
-		padding: 5px 12px;
-		border-radius: 999px;
-		background: rgba(139, 92, 246, 0.16);
-		border: 1px solid rgba(139, 92, 246, 0.45);
-		color: #c9b4ff;
-		font-size: 0.82rem;
-		font-weight: 600;
-		letter-spacing: 0.3px;
-		text-transform: uppercase;
-	}
-
-	.product-info p {
-		color: var(--c-muted);
-		margin-bottom: 16px;
-	}
-
-	.feature-list {
-		list-style: none;
-		margin: 6px 0 28px;
-		display: flex;
-		flex-direction: column;
-		gap: 10px;
-	}
-
-	.feature-list li {
-		position: relative;
-		padding-left: 32px;
-		color: var(--c-text);
-	}
-
-	.feature-list li::before {
-		content: '';
-		position: absolute;
-		left: 0;
-		top: 3px;
-		width: 20px;
-		height: 20px;
-		border-radius: 50%;
-		background: rgba(63, 140, 255, 0.18);
-		border: 1px solid var(--c-accent);
-	}
-
-	.feature-list li::after {
-		content: '';
-		position: absolute;
-		left: 7px;
-		top: 9px;
-		width: 6px;
-		height: 10px;
-		border: solid var(--c-accent);
-		border-width: 0 2px 2px 0;
-		transform: rotate(45deg);
-	}
-
-	.about-grid {
-		display: grid;
-		grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
-		gap: 48px;
-		align-items: start;
-	}
-
-	.about-text p {
-		color: var(--c-muted);
-	}
-
-	.diffs {
-		display: flex;
-		flex-direction: column;
-		gap: 16px;
-	}
-
-	.diff {
-		display: flex;
-		gap: 18px;
-		align-items: flex-start;
-		padding: 18px;
-		border: 1px solid var(--c-border);
-		border-radius: var(--radius);
-		background: var(--c-surface);
-	}
-
-	.dif-icon {
-		flex-shrink: 0;
-		width: 46px;
-		height: 46px;
+	.card-title-row h3 {
 		margin-bottom: 0;
 	}
 
-	.diff h3 {
-		font-size: 1.05rem;
-		margin-bottom: 4px;
+	.problem-no {
+		font-size: 0.8rem;
+		font-weight: 800;
+		letter-spacing: 0.5px;
+		color: var(--indigo);
+		background: rgba(79, 70, 229, 0.09);
+		border-radius: 8px;
+		padding: 4px 9px;
 	}
 
-	.diff p {
-		color: var(--c-muted);
-		font-size: 0.94rem;
+	/* Methods */
+	.method-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+		gap: 20px;
 	}
 
-	.contact-box {
+	.method-card {
+		position: relative;
+	}
+
+	.method-no {
+		position: absolute;
+		top: 22px;
+		right: 24px;
+		font-size: 2rem;
+		font-weight: 800;
+		letter-spacing: -1px;
+		color: rgba(79, 70, 229, 0.16);
+	}
+
+	/* Split band */
+	.split-band {
+		display: grid;
+		grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.7fr);
+		gap: 40px;
+		align-items: center;
+		background: var(--bg-0);
+		border: 1px solid var(--border);
+		border-radius: 22px;
+		padding: 44px;
+		box-shadow: var(--shadow-sm);
+	}
+
+	.split-actions {
+		display: flex;
+		flex-direction: column;
+		gap: 12px;
+	}
+
+	/* Capabilities */
+	.cap-grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 20px;
+	}
+
+	/* Case */
+	.case-card {
+		padding: 36px;
+	}
+
+	.case-grid {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		gap: 24px;
+	}
+
+	.case-block h3 {
+		font-size: 0.82rem;
+		text-transform: uppercase;
+		letter-spacing: 0.6px;
+		color: var(--indigo);
+		margin-bottom: 8px;
+	}
+
+	.case-block p {
+		color: var(--ink-2);
+		font-size: 0.95rem;
+	}
+
+	/* Architecture */
+	.arch-flow {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 16px;
+	}
+
+	.arch-node {
+		border: 1px solid var(--border);
+		border-radius: var(--radius);
+		padding: 20px;
+		background: var(--bg-0);
+		box-shadow: var(--shadow-sm);
+	}
+
+	.arch-node-label {
+		font-size: 0.78rem;
+		font-weight: 700;
+		letter-spacing: 0.5px;
+		text-transform: uppercase;
+		color: var(--muted);
+		margin-bottom: 12px;
+	}
+
+	.arch-chips {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 8px;
+	}
+
+	.chip {
+		display: inline-flex;
+		align-items: center;
+		padding: 6px 12px;
+		border-radius: 999px;
+		background: var(--bg-1);
+		border: 1px solid var(--border);
+		color: var(--ink-2);
+		font-size: 0.84rem;
+		font-weight: 500;
+	}
+
+	/* Security */
+	.security-grid {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		gap: 20px;
+	}
+
+	.security-card {
+		display: flex;
+		align-items: flex-start;
+		gap: 16px;
+	}
+
+	.security-card .card-icon {
+		margin-bottom: 0;
+		flex-shrink: 0;
+	}
+
+	.security-card h3 {
+		font-size: 1rem;
+	}
+
+	.cta-band {
+		max-width: 820px;
+		margin: 0 auto;
 		text-align: center;
-		max-width: 780px;
+		background: var(--grad);
+		border-radius: 24px;
+		padding: 56px 48px;
+		color: #fff;
+		box-shadow: 0 24px 60px rgba(79, 70, 229, 0.3);
 	}
 
-	.contact-box .section-sub {
-		margin-bottom: 34px;
+	.cta-band .eyebrow {
+		border-color: rgba(255, 255, 255, 0.35);
+		background: rgba(255, 255, 255, 0.16);
+		color: #fff;
+	}
+
+	.cta-band .section-title {
+		margin-bottom: 12px;
+	}
+
+	.cta-band .section-sub {
+		color: rgba(255, 255, 255, 0.9);
+		margin-bottom: 30px;
 	}
 
 	.contact-actions {
@@ -1013,57 +888,57 @@ const navLinks = [
 		gap: 14px;
 	}
 
-	.site-footer {
-		padding: 32px 0;
-		border-top: 1px solid var(--c-border);
-		background: var(--c-surface);
+	.cta-band .btn-primary {
+		background: #fff;
+		color: var(--indigo);
+		box-shadow: 0 10px 26px rgba(10, 22, 40, 0.25);
 	}
 
-	.footer-inner {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		flex-wrap: wrap;
-		gap: 12px;
+	.cta-band .btn-secondary {
+		background: transparent;
+		color: #fff;
+		border-color: rgba(255, 255, 255, 0.5);
+		box-shadow: none;
 	}
 
-	.footer-inner p {
-		color: var(--c-muted);
-		font-size: 0.9rem;
+	.cta-band .btn-secondary:hover {
+		border-color: #fff;
+		color: #fff;
+		background: rgba(255, 255, 255, 0.1);
 	}
 
-	.footer-nav {
-		display: flex;
-		gap: 18px;
-	}
-
-	.footer-nav a {
-		color: var(--c-muted);
-		font-size: 0.9rem;
-	}
-
-	.footer-nav a:hover {
-		color: var(--c-text);
-	}
-
-	@media (max-width: 860px) {
-		.product-grid,
-		.about-grid {
+	@media (max-width: 900px) {
+		.split-band {
 			grid-template-columns: 1fr;
-			gap: 36px;
+			padding: 32px;
 		}
 
-		.hero {
-			padding: 88px 0 72px;
+		.cap-grid,
+		.problem-grid {
+			grid-template-columns: 1fr 1fr;
 		}
 
-		.section {
-			padding: 64px 0;
+		.arch-flow {
+			grid-template-columns: 1fr 1fr;
 		}
 
-		.footer-inner {
-			justify-content: center;
-			text-align: center;
+		.case-grid,
+		.security-grid {
+			grid-template-columns: 1fr 1fr;
+		}
+	}
+
+	@media (max-width: 560px) {
+		.cap-grid,
+		.problem-grid,
+		.arch-flow,
+		.case-grid,
+		.security-grid {
+			grid-template-columns: 1fr;
+		}
+
+		.cta-band {
+			padding: 40px 24px;
 		}
 	}
 </style>
